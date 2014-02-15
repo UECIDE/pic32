@@ -47,7 +47,7 @@
                 <attribute name="Compiler" value="pic32-tools" />
                 <attribute name="Family" value="pic32" />
                 <attribute name="Platform" value="linux" />
-                <attribute name="Arch" value="i386,and64" />
+                <attribute name="Arch" value="i386,amd64" />
             </manifest>
         </jar>
         <delete dir="build" />

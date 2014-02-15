@@ -10,7 +10,6 @@
             <arg value="clone" />
             <arg value="--depth" />
             <arg value="1" />
-            <arg value="-q" />
             <arg value="git@github.com:chipKIT32/chipKIT32-MAX.git" />
         </exec>
         <exec executable="git" dir="files/chipKIT32-MAX">
