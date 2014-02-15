@@ -1,0 +1,18 @@
+variant=cmod
+name=chipKIT Cmod
+group=chipKIT
+platform=pic32
+board=_BOARD_CMOD_
+board.flags
+ldscript=chipKIT-application-32MX150F128.ld
+upload.protocol=stk500v2
+upload.maximum_size=122880
+upload.speed=115200
+build.mcu=32MX150F128D
+build.f_cpu=40000000L
+build.core=pic32
+build.variant=Cmod
+family=pic32
+version=0.4
+core=chipKIT
+manual=doc/chipKIT-Cmod_RM_RevE_1.pdf

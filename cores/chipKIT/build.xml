@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<project name="chipKIT" default="build">
+
+    <property name="version" value="0023" />
+    <property name="revision" value="1" />
+
+    <target name="build">
+        <mkdir dir="files" />
+        <exec executable="git" dir="files" failonerror="false">
+            <arg value="clone" />
+            <arg value="--depth" />
+            <arg value="1" />
+            <arg value="-q" />
+            <arg value="git@github.com:chipKIT32/chipKIT32-MAX.git" />
+        </exec>
+        <exec executable="git" dir="files/chipKIT32-MAX">
+            <arg value="pull" />
+        </exec>
+        <mkdir dir="build" />
+        <mkdir dir="build/chipKIT" />
+        <mkdir dir="build/chipKIT/api" />
+        <mkdir dir="build/chipKIT/examples" />
+        <mkdir dir="build/chipKIT/libraries" />
+        <mkdir dir="build/chipKIT/tools" />
+        <copy todir="build/chipKIT/api"> <fileset dir="files/chipKIT32-MAX/hardware/pic32/cores/pic32/" includes="**/*"/> </copy>
+        <copy todir="build/chipKIT/libraries"> <fileset dir="files/chipKIT32-MAX/libraries/" includes="**/*"/> </copy>
+        <copy todir="build/chipKIT/examples"> <fileset dir="files/chipKIT32-MAX/build/shared/examples/" includes="**/*"/> </copy>
+
+        <delete dir="build/chipKIT/examples/ArduinoISP" />
+        <delete dir="build/chipKIT/libraries/SD" />
+        <copy todir="build/chipKIT/libraries"> <fileset dir="libraries/" includes="**/*"/> </copy>
+        <copy todir="build/chipKIT/tools"> <fileset dir="tools/" includes="**/*"/> </copy>
+        <copy todir="build/chipKIT" file="files/chipKIT32-MAX/build/shared/lib/keywords.txt" />
+        <copy todir="build/chipKIT" file="core.txt" />
+        <replace file="build/chipKIT/core.txt" token="%VERSION%" value="${version}" />
+        <replace file="build/chipKIT/core.txt" token="%REVISION%" value="${revision}" />
+
+        <jar basedir="build" destfile="chipKIT.jar">
+            <manifest>
+                <attribute name="Version" value="${version}.${revision}" />
+                <attribute name="Author" value="chipKIT" />
+                <attribute name="Compiler" value="pic32-tools" />
+                <attribute name="Core" value="chipKIT" />
+                <attribute name="Platform" value="any" />
+                <attribute name="Family" value="pic32" />
+                <attribute name="Description" value="Arduino compatibility core for chipKIT boards" />
+            </manifest>
+        </jar>
+    </target>
+</project>

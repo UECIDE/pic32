@@ -1,0 +1,26 @@
+variant=chipkit_WF32
+name=chipKIT WF32
+group=chipKIT
+platform=pic32
+board=_BOARD_WF32_
+board.flags=
+ldscript=chipKIT-application-32MX695F512.ld
+upload.protocol=stk500v2
+upload.maximum_size=520192
+upload.speed=115200
+build.mcu=32MX695F512L
+build.f_cpu=80000000L
+build.core=pic32
+build.variant=WF32
+family=pic32
+version=0.5
+core=chipKIT
+manual=doc/chipKIT-WF32_RM_RevB_1.pdf
+
+options.usb.name=USB Settings
+options.usb.default=withoutSerial
+options.usb.purge=true
+options.usb.withoutSerial.name=Disable USB Serial
+options.usb.withoutSerial.flags=
+options.usb.withSerial.name=Enable USB Serial
+options.usb.withSerial.flags=-D_USE_USB_FOR_SERIAL_

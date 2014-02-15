@@ -1,0 +1,45 @@
+name=chipKIT
+description=The chipKIT Arduino compatability core
+compiler=pic32-tools
+
+core.flags=-DF_CPU=${build.f_cpu}::-DARDUINO=${core.version}::-D${board}::-DMPIDEVER=${core.revision}::-DMPIDE=${core.version}
+
+core.path=api
+core.header=WProgram.h
+core.version=%VERSION%
+core.revision=%REVISION%
+
+core.ldflags=-T::${find:${ldscript}}::-T::${core.root}/${core.path}/chipKIT-application-COMMON.ld
+
+library.path=libraries
+examples.path=examples
+
+ldscript=unknown.ld
+board=_UNKNOWN_BOARD_
+
+upload.avrdude.name=Upload to chipKIT board
+upload.avrdude.command.linux_arm=${core.root}/tools/linux_arm/avrdude::-V::-p${build.mcu}::-P${port}::-b${upload.speed}::-C${core.root}/tools/linux_arm/avrdude.conf::-cstk500v2::-Uflash:w:${filename}.hex:i::${verbose}
+upload.avrdude.command.linux_i386=${core.root}/tools/linux32/avrdude::-V::-p${build.mcu}::-P${port}::-b${upload.speed}::-C${core.root}/tools/linux32/avrdude.conf::-cstk500v2::-Uflash:w:${filename}.hex:i::${verbose}
+upload.avrdude.command.linux_amd64=${core.root}/tools/linux64/avrdude::-V::-p${build.mcu}::-P${port}::-b${upload.speed}::-C${core.root}/tools/linux64/avrdude.conf::-cstk500v2::-Uflash:w:${filename}.hex:i::${verbose}
+upload.avrdude.command.windows=${core.root}/tools/windows/avrdude::-V::-p${build.mcu}::-P${port}::-b${upload.speed}::-C${core.root}/tools/windows/avrdude.conf::-cstk500v2::-Uflash:w:${filename}.hex:i::${verbose}
+upload.avrdude.command.macosx=${core.root}/tools/macosx/avrdude::-V::-p${build.mcu}::-P${port}::-b${upload.speed}::-C${core.root}/tools/macosx/avrdude.conf::-cstk500v2::-Uflash:w:${filename}.hex:i::${verbose}
+
+upload.avrdude.verbose=-v
+upload.avrdude.quiet=-q::-q
+upload.avrdude.dtr=yes
+upload.avrdude.rts=yes
+
+upload.pickit2.name=PicKit 2
+upload.pickit2.command.linux_arm=${core.root}/tools/linux_arm/pic32prog::-p::${filename}.hex
+upload.pickit2.command.linux_i386=${core.root}/tools/linux32/pic32prog::-p::${filename}.hex
+upload.pickit2.command.linux_amd64=${core.root}/tools/linux64/pic32prog::-p::${filename}.hex
+upload.pickit2.command.windows=${core.root}/tools/windows/pic32prog::-p::${filename}.hex
+upload.pickit2.command.macosx=${core.root}/tools/macosx/pic32prog::-p::${filename}.hex
+
+upload.avrdude.verbose=-v
+upload.avrdude.quiet=-q::-q
+
+sketch.upload=avrdude::pickit2
+bootloader.upload=pickit2
+
+family=pic32

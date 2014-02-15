@@ -1,0 +1,27 @@
+variant=fubarino_mini_dev
+name=Fubarino Mini (dev)
+group=Fubarino
+platform=pic32
+board=_BOARD_FUBARINO_MINI_
+board.flags=-D_USE_USB_FOR_SERIAL_
+ccflags=-Map="map.map"
+ldscript=chipKIT-application-32MX250F128.ld
+compiler.c.flags=-O2::-c::-mno-smart-io::-w::-ffunction-sections::-fdata-sections::-G1024::-g::-mdebugger::-Wcast-align::-fno-short-double
+compiler.cpp.flags=-O2::-c::-mno-smart-io::-w::-fno-exceptions::-ffunction-sections::-fdata-sections::-G1024::-g::-mdebugger::-Wcast-align::-fno-short-double
+upload.protocol=stk500v2
+upload.maximum_size=122880
+upload.speed=115200
+bootloader.low_fuses=0xff
+bootloader.high_fuses=0xdd
+bootloader.extended_fuses=0x00
+bootloader.path=not-supported
+bootloader.file=not-supported
+bootloader.unlock_bits=0x3F
+bootloader.lock_bits=0x0F
+build.mcu=32MX250F128D
+build.f_cpu=40000000L
+build.core=pic32
+build.variant=Fubarino_Mini
+family=pic32
+version=0.3
+core=chipKIT

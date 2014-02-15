@@ -1,0 +1,29 @@
+name=Velox One
+
+# new items
+group=Majenko Technologies
+platform=pic32
+board=_BOARD_VELOX_ONE_
+board.flags=-D_USE_USB_FOR_SERIAL_
+ldscript=hid-695h.ld
+
+upload.using=usb
+upload.maximum_size=524288
+upload.maximum_ram=131072
+upload.speed=115200
+
+build.mcu=32MX695F512H
+build.f_cpu=80000000L
+build.core=pic32
+build.variant=velox_one
+
+upload.mphid.name=Upload using Microchip HID bootloader
+upload.mphid.command.windows=${board.root}/tools/windows/mphidflash::-w::${filename.hex}
+upload.mphid.command.macosx=${board.root}/tools/osx/mphidflash::-w::${filename.hex}
+upload.mphid.command.linux=${board.root}/tools/linux/pic32prog::-p::${filename.hex}
+
+sketch.upload=mphid::avrdude
+
+family=pic32
+version=0.5
+core=chipKIT

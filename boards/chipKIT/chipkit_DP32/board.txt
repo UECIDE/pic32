@@ -1,0 +1,19 @@
+variant=chipkit_DP32
+name=chipKIT DP32
+group=chipKIT
+platform=pic32
+board=_BOARD_DP32_
+board.flags=-D_USE_USB_FOR_SERIAL_
+ccflags=-Map="map.map"
+ldscript=chipKIT-application-32MX250F128.ld
+upload.protocol=stk500v2
+upload.maximum_size=122880
+upload.speed=115200
+build.mcu=32MX250F128B
+build.f_cpu=40000000L
+build.core=pic32
+build.variant=DP32
+family=pic32
+version=0.5
+core=chipKIT
+manual=doc/chipKIT_DP32_rm.pdf
