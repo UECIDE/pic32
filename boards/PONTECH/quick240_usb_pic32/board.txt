@@ -16,4 +16,5 @@ build.core=pic32
 build.variant=quicK240
 family=pic32
 version=0.5
+revision=1
 core=chipKIT

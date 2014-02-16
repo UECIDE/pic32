@@ -14,6 +14,7 @@ build.core=pic32
 build.variant=WF32
 family=pic32
 version=0.5
+revision=1
 core=chipKIT
 manual=doc/chipKIT-WF32_RM_RevB_1.pdf
 

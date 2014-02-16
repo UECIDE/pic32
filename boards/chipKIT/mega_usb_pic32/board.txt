@@ -14,5 +14,6 @@ build.core=pic32
 build.variant=Max32
 family=pic32
 version=0.4
+revision=1
 core=chipKIT
 manual=doc/chipKIT Max32_rm.pdf

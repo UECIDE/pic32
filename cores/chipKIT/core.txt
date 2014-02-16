@@ -6,8 +6,8 @@ core.flags=-DF_CPU=${build.f_cpu}::-DARDUINO=${core.version}::-D${board}::-DMPID
 
 core.path=api
 core.header=WProgram.h
-core.version=%VERSION%
-core.revision=%REVISION%
+version=%VERSION%
+revision=%REVISION%
 
 core.ldflags=-T::${find:${ldscript}}::-T::${core.root}/${core.path}/chipKIT-application-COMMON.ld
 

@@ -24,4 +24,5 @@ build.core=pic32
 build.variant=Cerebot_MX3cK
 family=pic32
 version=0.3
+revision=1
 core=chipKIT

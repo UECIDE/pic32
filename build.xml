@@ -7,18 +7,14 @@
     </taskdef>
 
     <target name="build">
-        <subant target="build">
-            <dirset dir="." includes="*"/>
-        </subant>
+        <subant target="build" buildpath="compilers" /> 
+        <subant target="build" buildpath="cores" /> 
+        <subant target="build" buildpath="boards" /> 
     </target>
-    <target name="install">
-        <subant target="install">
-            <dirset dir="." includes="*"/>
-        </subant>
-    </target>
+
     <target name="clean">
-        <subant target="clean">
-            <dirset dir="." includes="*"/>
-        </subant>
+        <subant target="clean" buildpath="compilers" /> 
+        <subant target="clean" buildpath="cores" /> 
+        <subant target="clean" buildpath="boards" /> 
     </target>
 </project>

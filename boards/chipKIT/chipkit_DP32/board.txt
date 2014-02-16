@@ -15,5 +15,6 @@ build.core=pic32
 build.variant=DP32
 family=pic32
 version=0.5
+revision=1
 core=chipKIT
 manual=doc/chipKIT_DP32_rm.pdf

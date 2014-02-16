@@ -23,4 +23,5 @@ build.core=pic32
 build.variant=Fubarino_SD
 family=pic32
 version=0.5
+revision=1
 core=chipKIT

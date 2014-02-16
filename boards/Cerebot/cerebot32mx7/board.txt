@@ -23,3 +23,4 @@ build.variant=Cerebot_32MX7
 family=pic32
 version=0.3
 core=chipKIT 
+revision=1

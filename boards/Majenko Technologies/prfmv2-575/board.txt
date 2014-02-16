@@ -37,4 +37,5 @@ sketch.upload=mphid::avrdude
 
 family=pic32
 version=0.2
+revision=1
 core=chipKIT

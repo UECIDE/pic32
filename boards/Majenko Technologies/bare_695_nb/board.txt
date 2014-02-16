@@ -37,4 +37,5 @@ sketch.upload=pic32prog
 
 family=pic32
 version=0.10
+revision=1
 core=chipKIT

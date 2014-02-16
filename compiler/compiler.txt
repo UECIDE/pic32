@@ -1,6 +1,7 @@
 name=pic32-tools
 family=pic32
-version=%VERSION%-%REVISION%
+version=%VERSION%
+revision=%REVISION%
 description=PIC32 GCC compiler version 4.5.1
 
 optimize=-O2

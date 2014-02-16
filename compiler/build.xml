@@ -11,6 +11,13 @@
         <mkdir dir="files" />
     </target>
 
+    <target name="install" depends="build">
+        <move file="pic32-tools-linux.jar" todir="/var/www/uecide/plugins/compilers" />
+        <move file="pic32-tools-pi.jar" todir="/var/www/uecide/plugins/compilers" />
+        <move file="pic32-tools-macosx.jar" todir="/var/www/uecide/plugins/compilers" />
+        <move file="pic32-tools-windows.jar" todir="/var/www/uecide/plugins/compilers" />
+    </target>
+
     <target name="macosx">
         <get src="http://chipkit.s3.amazonaws.com/compilers/pic32-tools-chipKIT-cxx-master-Darwin-image-${version}.zip" 
             dest="files/pic32-tools-darwin.zip" usetimestamp="true" />    
@@ -94,4 +101,14 @@
         </jar>
         <delete dir="build" />
     </target>
+
+    <target name="clean">
+        <delete dir="files" />
+        <delete dir="build" />
+        <delete file="pic32-tools-linux.jar" />
+        <delete file="pic32-tools-pi.jar" />
+        <delete file="pic32-tools-macosx.jar" />
+        <delete file="pic32-tools-windows.jar" />
+    </target>
+
 </project>

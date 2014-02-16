@@ -16,4 +16,5 @@ build.core=pic32
 build.variant=Default_100
 family=pic32
 version=0.4
+revision=1
 core=chipKIT
