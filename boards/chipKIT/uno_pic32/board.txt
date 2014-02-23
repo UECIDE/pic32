@@ -16,6 +16,6 @@ build.core=pic32
 build.variant=Uno32
 family=pic32
 version=0.5
-revision=1
+revision=3
 core=chipKIT
 manual=doc/chipKIT-Uno32-RevC_rm.pdf
