@@ -2,7 +2,7 @@
 <project name="chipKIT" default="build">
 
     <property name="version" value="0023" />
-    <property name="revision" value="3" />
+    <property name="revision" value="8" />
 
     <target name="build">
         <mkdir dir="files" />
@@ -22,6 +22,7 @@
         <mkdir dir="build/chipKIT/libraries" />
         <mkdir dir="build/chipKIT/tools" />
         <copy todir="build/chipKIT/api"> <fileset dir="files/chipKIT32-MAX/hardware/pic32/cores/pic32/" includes="**/*"/> </copy>
+        <copy todir="build/chipKIT/api" file="HardwareSerial_cdcacm.c" />
         <copy todir="build/chipKIT/libraries"> <fileset dir="files/chipKIT32-MAX/hardware/pic32/libraries/" includes="**/*"/> </copy>
         <copy todir="build/chipKIT/examples"> <fileset dir="files/chipKIT32-MAX/build/shared/examples/" includes="**/*"/> </copy>
 
