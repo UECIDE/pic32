@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<project name="xc32" default="build">
+
+    <property name="version" value="1.31" />
+    <property name="revision" value="1" />
+
+    <target name="build">
+        <mkdir dir="build"/>
+        <mkdir dir="build/xc32"/>
+        <copy file="compiler.txt" todir="build/xc32" />
+        <replace file="build/xc32/compiler.txt" token="%VERSION%" value="${version}" />
+        <replace file="build/xc32/compiler.txt" token="%REVISION%" value="${revision}" />
+        
+        <jar basedir="build" destfile="xc32.jar">
+            <manifest>
+                <attribute name="Version" value="${version}-${revision}" />
+                <attribute name="Author" value="Microchip" />
+                <attribute name="Compiler" value="xc32" />
+                <attribute name="Family" value="pic32" />
+                <attribute name="Platform" value="any" />
+                <attribute name="Arch" value="any" />
+            </manifest>
+        </jar>
+        <delete dir="build" />
+    </target>
+
+    <target name="install" depends="build">
+        <move file="xc32.jar" todir="/var/www/uecide/plugins/compilers" />
+    </target>
+
+    <target name="clean">
+        <delete dir="build" />
+        <delete file="xc32.jar" />
+    </target>
+
+</project>

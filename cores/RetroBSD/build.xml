@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<project name="RetroBSD" default="build">
+
+    <property name="version" value="0" />
+    <property name="revision" value="5" />
+
+    <target name="build">
+        <mkdir dir="build/RetroBSD" />
+        <copy todir="build/RetroBSD"> <fileset dir="files" includes="**/*"/> </copy>
+        <replace file="build/RetroBSD/core.txt" token="%VERSION%" value="${version}" />
+        <replace file="build/RetroBSD/core.txt" token="%REVISION%" value="${revision}" />
+
+        <jar basedir="build" destfile="RetroBSD.jar">
+            <manifest>
+                <attribute name="Version" value="${version}-${revision}" />
+                <attribute name="Author" value="RetroBSD" />
+                <attribute name="Compiler" value="pic32-tools" />
+                <attribute name="Core" value="RetroBSD" />
+                <attribute name="Platform" value="any" />
+                <attribute name="Family" value="pic32" />
+                <attribute name="Description" value="RetroBSD user-land application compilation" />
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="install" depends="build">
+        <move file="RetroBSD.jar" todir="/var/www/uecide/plugins/cores" />
+    </target>
+
+    <target name="clean">
+        <delete dir="build" />
+        <delete file="RetroBSD.jar" />
+    </target>
+
+</project>

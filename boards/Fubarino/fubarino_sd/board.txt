@@ -1,5 +1,5 @@
 variant=fubarino_sd
-name=Fubarino SD
+description=Fubarino SD
 group=Fubarino
 platform=pic32
 board=_BOARD_FUBARINO_SD_
@@ -25,3 +25,4 @@ family=pic32
 version=0.5
 revision=1
 core=chipKIT
+name=fubarino_sd

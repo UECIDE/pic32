@@ -1,0 +1,64 @@
+# Set the path of the compiler here if it's not in your system path.  
+# Be sure to include the trailing /.
+#
+#compiler.bin=/path/to/compiler/bin/folder/
+
+name=xc32
+family=pic32
+version=%VERSION%
+revision=%REVISION%
+description=XC32 compiler (Native installation)
+
+warnings=
+extra.flags=
+
+cflags=-g::${warnings}::-ffunction-sections::-fdata-sections::-mno-smart-io::-mdebugger::-Wcast-align::-fno-short-double::-nostartfiles::${extra.flags}
+cppflags=-g::${warnings}::-fno-exceptions::-ffunction-sections::-fdata-sections::-mno-smart-io::-mdebugger::-Wcast-align::-fno-short-double::-nostartfiles::${extra.flags}
+ldflags=-Wl,--gc-sections,-Map,${filename}.map::-nostartfiles::${extra.flags}
+
+gcc=${compiler.bin}xc32-gcc
+gpp=${compiler.bin}xc32-g++
+ar=${compiler.bin}xc32-ar
+objcopy=${compiler.bin}xc32-objcopy
+objdump=${compiler.bin}xc32-objdump
+size=${compiler.bin}xc32-size
+binhex=${compiler.bin}xc32-bin2hex
+
+compile.c=${gcc}::-c::${source.name}::-o::${object.name}::-mprocessor=${build.mcu}::${cflags}::${core.flags}::${board.flags}::${includes}::${option.flags}::${option.cflags}
+compile.cpp=${gpp}::-c::${source.name}::-o::${object.name}::-mprocessor=${build.mcu}::${cppflags}::${core.flags}::${board.flags}::${includes}::${option.flags}::${option.cppflags}
+compile.S=${gcc}::-c::${source.name}::-o::${object.name}::-mprocessor=${build.mcu}::${cflags}::${core.flags}::${board.flags}::${includes}::${option.flags}::${option.cflags}
+compile.ar=${ar}::rcs::${library}::${object.name}
+compile.eep=${objcopy}::-O::ihex::-j::.eeprom::--set-section-flags=.eeprom=alloc,load::--no-change-warnings::--change-section-lma::.eeprom=0::${build.path}/${filename}.elf::${build.path}/${filename}.eep
+compile.hex=${binhex}::-a::${build.path}/${filename}.elf
+compile.lss=${objdump}::-h::-S::${build.path}/${filename}.elf
+compile.link=${gpp}::${ldflags}::${core.ldflags}::${board.ldflags}::${option.flags}::${option.ldflags}::-mprocessor=${build.mcu}::-o::${build.path}/${filename}.elf::${object.filelist}::-L${build.path}::-L${libraries.path}::-Wl,--start-group::${libraries}::-Wl,--end-group::-lm::${extra.libs}
+compile.size=${size}::${build.path}/${filename}.elf
+
+compile.bin=${objcopy}::--input::binary::--output-target::elf32-tradlittlemips::--binary-architecture::mips::--rename-section::.data=.text,alloc,load,readonly,code,share,contents::${source.name}::${object.name}
+
+compiler.error=^([^:]+):(\\d+):\\d+: error: (.*)
+compiler.warning=^([^:]+):(\\d+): Warning: (.*)
+
+options.warnings.name=Warnings
+options.warnings.default=off
+options.warnings.on.name=Enable all warnings
+options.warnings.on.flags=-Wall
+options.warnings.err.name=Error on warnings
+options.warnings.err.flags=-Wall::-Werror
+options.warnings.off.name=Suppress warnings
+options.warnings.off.flags=-w
+
+options.optim.name=Optimization
+options.optim.default=size
+options.optim.purge=true
+options.optim.size.flags=-Os
+options.optim.size.name=Size
+options.optim.l0.flags=-O0
+options.optim.l0.name=Level 0
+options.optim.l1.flags=-O1
+options.optim.l1.name=Level 1
+options.optim.l2.flags=-O2
+options.optim.l2.name=Level 2
+options.optim.l3.flags=-O3
+options.optim.l3.name=Level 3
+

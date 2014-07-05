@@ -1,5 +1,5 @@
 variant=mc_pic32_ethernet_starterkit
-name=Microchip PIC32 Ethernet Starter kit
+description=Microchip PIC32 Ethernet Starter kit
 group=Microchip
 platform=pic32
 board=_BOARD_PIC32_ETHERNET_STARTER_KIT_
@@ -24,3 +24,4 @@ family=pic32
 version=0.3
 revision=1
 core=chipKIT
+name=mc_pic32_ethernet_starterkit

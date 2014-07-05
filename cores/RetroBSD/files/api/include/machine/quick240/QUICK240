@@ -1,0 +1,27 @@
+#
+# Quick240
+# ========
+#
+# Console on USB
+# SD/MMC card driver on SPI2
+
+core pic32mx7
+mapping quick240
+linker bootloader
+
+device kernel led=LED1 cpu_khz=80000 bus_khz=80000
+
+device console device=ttyUSB0
+device uartusb
+device uart1 baud=115200
+device uart2 baud=115200
+device uart3 baud=115200
+device uart4 baud=115200
+
+device sd0 port=1 cs=SDCS
+device gpio
+device spi
+device adc
+
+device bootloader led=LED1 button=PROG crystal=8 jump=0x9d000000
+

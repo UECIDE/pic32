@@ -6,15 +6,15 @@
 
     <target name="build">
         <mkdir dir="files" />
-        <exec executable="git" dir="files" failonerror="false">
+        <!--exec executable="git" dir="files" failonerror="false">
             <arg value="clone" />
-            <arg value="--depth" />
+            <arg value="- -depth" />
             <arg value="1" />
             <arg value="git@github.com:chipKIT32/chipKIT32-MAX.git" />
         </exec>
         <exec executable="git" dir="files/chipKIT32-MAX">
             <arg value="pull" />
-        </exec>
+        </exec-->
         <mkdir dir="build" />
         <mkdir dir="build/chipKIT" />
         <mkdir dir="build/chipKIT/api" />
@@ -27,7 +27,7 @@
         <copy todir="build/chipKIT/examples"> <fileset dir="files/chipKIT32-MAX/build/shared/examples/" includes="**/*"/> </copy>
 
         <delete dir="build/chipKIT/examples/ArduinoISP" />
-        <copy todir="build/chipKIT/libraries"> <fileset dir="libraries/" includes="**/*" overwrite="true"/> </copy>
+        <copy todir="build/chipKIT/libraries" overwrite="true"> <fileset dir="libraries/" includes="**/*"/> </copy>
         <copy todir="build/chipKIT/tools"> <fileset dir="tools/" includes="**/*"/> </copy>
         <copy todir="build/chipKIT" file="files/chipKIT32-MAX/build/shared/lib/keywords.txt" />
         <copy todir="build/chipKIT" file="core.txt" />

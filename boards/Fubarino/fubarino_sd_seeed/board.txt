@@ -1,5 +1,5 @@
 variant=fubarino_sd_seeed
-name=Fubarino SD (Seeed)
+description=Fubarino SD (Seeed)
 group=Fubarino
 platform=pic32
 board=_BOARD_FUBARINO_SD_
@@ -24,3 +24,4 @@ family=pic32
 version=0.3
 revision=1
 core=chipKIT
+name=fubarino_sd_seeed

@@ -1,5 +1,5 @@
 variant=fubarino_mini
-name=Fubarino Mini
+description=Fubarino Mini
 group=Fubarino
 platform=pic32
 board=_BOARD_FUBARINO_MINI_ -G1024
@@ -18,3 +18,4 @@ family=pic32
 version=0.6
 revision=1
 core=chipKIT
+name=fubarino_mini

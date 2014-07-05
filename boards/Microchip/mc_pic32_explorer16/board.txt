@@ -1,5 +1,5 @@
 variant=mc_pic32_explorer16
-name=Microchip PIC32 Explorer 16
+description=Microchip PIC32 Explorer 16
 group=Microchip
 platform=pic32
 board=_BOARD_PIC32_EXPLORER16_
@@ -24,3 +24,4 @@ family=pic32
 version=0.3
 revision=1
 core=chipKIT
+name=mc_pic32_explorer16

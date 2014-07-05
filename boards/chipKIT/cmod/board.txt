@@ -1,5 +1,5 @@
 variant=cmod
-name=chipKIT Cmod
+description=chipKIT Cmod
 group=chipKIT
 platform=pic32
 board=_BOARD_CMOD_
@@ -17,3 +17,4 @@ version=0.4
 revision=1
 core=chipKIT
 manual=doc/chipKIT-Cmod_RM_RevE_1.pdf
+name=cmod

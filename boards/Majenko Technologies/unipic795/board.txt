@@ -1,4 +1,4 @@
-description=UniPIC With '795L
+description=UniPIC With '795L (HID Bootloader)
 
 # new items
 group=Majenko Technologies
@@ -15,7 +15,7 @@ upload.maximum_size=524288
 upload.maximum_ram=131072
 upload.speed=115200
 
-bootloader=bootloader.hex
+bootloader=bootloader
 bootloader.low_fuses=0xff
 bootloader.high_fuses=0xdd
 bootloader.extended_fuses=0x00
@@ -30,14 +30,14 @@ build.core=pic32
 build.variant=unipic795
 
 upload.pic32prog.name=Upload using HID bootloader
-upload.pic32prog..command.windows=${board.root}/tools/windows/pic32prog::-p::${filename.hex}
-upload.pic32prog.command.macosx=${board.root}/tools/osx/pic32prog::-p::${filename.hex}
-upload.pic32prog.command.linux=${board.root}/tools/linux/pic32prog::-p::${filename.hex}
+upload.pic32prog..command.windows=${board.root}/tools/windows/pic32prog::-p::${filename}.hex
+upload.pic32prog.command.macosx=${board.root}/tools/osx/pic32prog::-p::${filename}.hex
+upload.pic32prog.command.linux=${board.root}/tools/linux/pic32prog::-p::${filename}.hex
 
 sketch.upload=pic32prog
 
 family=pic32
 version=0.10
-revision=1
+revision=3
 core=chipKIT
 name=unipic795

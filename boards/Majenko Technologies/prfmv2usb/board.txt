@@ -1,4 +1,4 @@
-name=Pulse Rifle FX Module V2 with USB
+description=Pulse Rifle FX Module V2 with USB
 
 # new items
 group=Majenko Technologies
@@ -29,9 +29,9 @@ build.core=pic32
 build.variant=prfm
 
 upload.mphid.name=Upload using Microchip HID bootloader
-upload.mphid.command.windows=${board.root}/tools/windows/mphidflash::-w::${filename.hex}
-upload.mphid.command.macosx=${board.root}/tools/osx/mphidflash::-w::${filename.hex}
-upload.mphid.command.linux=${board.root}/tools/linux/pic32prog::-p::${filename.hex}
+upload.mphid.command.windows=${board.root}/tools/windows/mphidflash::-w::${filename}.hex
+upload.mphid.command.macosx=${board.root}/tools/osx/mphidflash::-w::${filename}.hex
+upload.mphid.command.linux=${board.root}/tools/linux/pic32prog::-p::${filename}.hex
 
 sketch.upload=mphid::avrdude
 
@@ -39,3 +39,4 @@ family=pic32
 version=0.5
 revision=1
 core=chipKIT
+name=prfmv2usb

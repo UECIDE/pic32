@@ -1,0 +1,46 @@
+name=pic32-tools-MZ
+family=pic32
+version=20130228
+revision=1
+description=PIC32 GCC compiler version 4.5.1
+
+optimize=-O2
+warnings=
+extra.flags=
+
+cflags=-g::${optimize}::${warnings}::-ffunction-sections::-fdata-sections::-mno-smart-io::-mdebugger::-Wcast-align::-fno-short-double::-nostartfiles::${extra.flags}
+cppflags=-g::${optimize}::${warnings}::-fno-exceptions::-ffunction-sections::-fdata-sections::-mno-smart-io::-mdebugger::-Wcast-align::-fno-short-double::-nostartfiles::${extra.flags}
+ldflags=${optimize}::-Wl,--gc-sections,-Map,${filename}.map::-mdebugger::-mno-peripheral-libs::-nostartfiles::${extra.flags}
+
+gcc=${compiler.root}/bin/pic32-gcc
+gpp=${compiler.root}/bin/pic32-g++
+ar=${compiler.root}/bin/pic32-ar
+objcopy=${compiler.root}/bin/pic32-objcopy
+objdump=${compiler.root}/bin/pic32-objdump
+size=${compiler.root}/bin/pic32-size
+binhex=${compiler.root}/bin/pic32-bin2hex
+
+compile.c=${gcc}::-c::${source.name}::-o::${object.name}::-mprocessor=${build.mcu}::${cflags}::${core.flags}::${board.flags}::${includes}::${option.flags}::${option.cflags}
+compile.cpp=${gpp}::-c::${source.name}::-o::${object.name}::-mprocessor=${build.mcu}::${cppflags}::${core.flags}::${board.flags}::${includes}::${option.flags}::${option.cppflags}
+compile.S=${gcc}::-c::${source.name}::-o::${object.name}::-mprocessor=${build.mcu}::${cflags}::${core.flags}::${board.flags}::${includes}::${option.flags}::${option.cflags}
+compile.ar=${ar}::rcs::${library}::${object.name}
+compile.eep=${objcopy}::-O::ihex::-j::.eeprom::--set-section-flags=.eeprom=alloc,load::--no-change-warnings::--change-section-lma::.eeprom=0::${build.path}/${filename}.elf::${build.path}/${filename}.eep
+compile.hex=${binhex}::-a::${build.path}/${filename}.elf
+compile.lss=${objdump}::-h::-S::${build.path}/${filename}.elf
+compile.link=${gcc}::${ldflags}::${core.ldflags}::${board.ldflags}::${option.flags}::${option.ldflags}::-mprocessor=${build.mcu}::-o::${build.path}/${filename}.elf::${object.filelist}::-L${build.path}::-L${libraries.path}::-Wl,--start-group::${libraries}::-Wl,--end-group::-lm::${extra.libs}
+compile.size=${size}::${build.path}/${filename}.elf
+
+compile.bin=${objcopy}::--input::binary::--output-target::elf32-tradlittlemips::--binary-architecture::mips::--rename-section::.data=.text,alloc,load,readonly,code,share,contents::${source.name}::${object.name}
+
+compiler.error=^([^:]+):(\\d+):\\d+: error: (.*)
+compiler.warning=^([^:]+):(\\d+): Warning: (.*)
+
+options.warnings.name=Warnings
+options.warnings.default=off
+options.warnings.on.name=Enable all warnings
+options.warnings.on.flags=-Wall
+options.warnings.err.name=Error on warnings
+options.warnings.err.flags=-Wall::-Werror
+options.warnings.off.name=Suppress warnings
+options.warnings.off.flags=-w
+

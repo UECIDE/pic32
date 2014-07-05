@@ -1,5 +1,5 @@
 variant=cerebot_mx7ck
-name=Cerebot MX7cK
+description=Cerebot MX7cK
 group=Cerebot
 platform=pic32
 board=_BOARD_CEREBOT_MX7CK_
@@ -24,3 +24,4 @@ family=pic32
 version=0.3
 revision=1
 core=chipKIT
+name=cerebot_mx7ck

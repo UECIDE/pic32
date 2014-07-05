@@ -1,5 +1,5 @@
 variant=chipkit_uc32
-name=chipKIT uC32
+description=chipKIT uC32
 group=chipKIT
 platform=pic32
 board=_BOARD_UC32_
@@ -17,3 +17,4 @@ version=0.4
 revision=1
 core=chipKIT
 manual=doc/chipKIT uC32_rm.pdf
+name=chipkit_uc32

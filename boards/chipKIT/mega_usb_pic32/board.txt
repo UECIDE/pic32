@@ -1,5 +1,5 @@
 variant=mega_usb_pic32
-name=chipKIT MAX32-USB for Serial
+description=chipKIT MAX32-USB for Serial
 group=chipKIT
 platform=pic32
 board=_BOARD_MEGA_
@@ -17,3 +17,4 @@ version=0.4
 revision=1
 core=chipKIT
 manual=doc/chipKIT Max32_rm.pdf
+name=mega_usb_pic32

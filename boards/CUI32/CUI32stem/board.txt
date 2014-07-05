@@ -1,5 +1,5 @@
 variant=CUI32stem
-name=CUI32stem
+description=CUI32stem
 group=CUI32
 platform=pic32
 board=_BOARD_CUI32_
@@ -18,3 +18,4 @@ family=pic32
 version=0.4
 revision=1
 core=chipKIT
+name=CUI32stem

@@ -1,5 +1,5 @@
 variant=mc_pic32_starterkit
-name=Microchip PIC32 Starter kit
+description=Microchip PIC32 Starter kit
 group=Microchip
 platform=pic32
 board=_BOARD_PIC32_STARTER_KIT_
@@ -24,3 +24,4 @@ family=pic32
 version=0.3
 revision=1
 core=chipKIT
+name=mc_pic32_starterkit

@@ -1,0 +1,1 @@
+/home/matt/.uecide/cores/chipKIT/tools/linux64/avrdude -V -p32MX795F512L -P/dev/ttyACM0 -b115200 -C/home/matt/.uecide/cores/chipKIT/tools/linux64/avrdude.conf -cstk500v2 -Uflash:w:unix.hex:i -v -v -v -v

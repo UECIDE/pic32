@@ -1,5 +1,5 @@
 variant=cerebot_mx3ck_512
-name=Cerebot MX3cK 512
+description=Cerebot MX3cK 512
 group=Cerebot
 platform=pic32
 board=_BOARD_CEREBOT_MX3CK_512_
@@ -26,3 +26,4 @@ family=pic32
 version=0.3
 revision=1
 core=chipKIT
+name=cerebot_mx3ck_512

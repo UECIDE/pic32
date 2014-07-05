@@ -26,7 +26,7 @@
 #define	NUM_TCK_PINS		0
 #define	NUM_INT_PINS		4
 
-#define	NUM_SERIAL_PORTS	3
+#define	NUM_SERIAL_PORTS	6
 #define	NUM_SPI_PORTS		1
 #define	NUM_I2C_PORTS		1
 

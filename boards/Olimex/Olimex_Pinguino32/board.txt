@@ -1,5 +1,5 @@
 variant=Olimex_Pinguino32
-name=PIC32 Pinguino
+description=PIC32 Pinguino
 group=Olimex
 platform=pic32
 board=_BOARD_OLIMEX_PIC32_PINGUINO_
@@ -24,3 +24,4 @@ family=pic32
 version=0.3
 revision=1
 core=chipKIT
+name=Olimex_Pinguino32

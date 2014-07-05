@@ -1,5 +1,5 @@
 variant=quick240_usb_pic32
-name=PONTECH quicK240
+description=PONTECH quicK240
 group=PONTECH
 platform=pic32
 board=_BOARD_PONTECH_QUICK240_USB_
@@ -18,3 +18,4 @@ family=pic32
 version=0.5
 revision=1
 core=chipKIT
+name=quick240_usb_pic32

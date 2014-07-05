@@ -1,5 +1,5 @@
 variant=chipkit_WF32
-name=chipKIT WF32
+description=chipKIT WF32
 group=chipKIT
 platform=pic32
 board=_BOARD_WF32_
@@ -25,3 +25,4 @@ options.usb.withoutSerial.name=Disable USB Serial
 options.usb.withoutSerial.flags=
 options.usb.withSerial.name=Enable USB Serial
 options.usb.withSerial.flags=-D_USE_USB_FOR_SERIAL_
+name=chipkit_WF32

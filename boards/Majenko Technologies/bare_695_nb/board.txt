@@ -1,4 +1,4 @@
-name=Bare PIC32MX695F512L (Internal Osc, no bootloader)
+description=Bare PIC32MX695F512L (Internal Osc, no bootloader)
 
 # new items
 group=Majenko Technologies
@@ -29,9 +29,9 @@ build.core=pic32
 build.variant=bare_695
 
 upload.pic32prog.name=Upload using PicKit2 programmer
-upload.pic32prog..command.windows=${board.root}/tools/windows/pic32prog::-p::${filename.hex}
-upload.pic32prog.command.macosx=${board.root}/tools/osx/pic32prog::-p::${filename.hex}
-upload.pic32prog.command.linux=${board.root}/tools/linux/pic32prog::-p::${filename.hex}
+upload.pic32prog..command.windows=${board.root}/tools/windows/pic32prog::-p::${filename}.hex
+upload.pic32prog.command.macosx=${board.root}/tools/osx/pic32prog::-p::${filename}.hex
+upload.pic32prog.command.linux=${board.root}/tools/linux/pic32prog::-p::${filename}.hex
 
 sketch.upload=pic32prog
 
@@ -39,3 +39,4 @@ family=pic32
 version=0.10
 revision=1
 core=chipKIT
+name=bare_695_nb

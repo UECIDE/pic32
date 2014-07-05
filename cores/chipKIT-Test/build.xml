@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<project name="chipKIT-Test" default="build">
+
+    <property name="version" value="0023" />
+    <property name="revision" value="19" />
+
+    <target name="build">
+        <mkdir dir="build" />
+        <mkdir dir="build/${ant.project.name}" />
+        <copy todir="build/${ant.project.name}"> <fileset dir="files/chipKIT-Test" includes="**/*"/> </copy>
+
+        <replace file="build/${ant.project.name}/core.txt" token="%VERSION%" value="${version}" />
+        <replace file="build/${ant.project.name}/core.txt" token="%REVISION%" value="${revision}" />
+
+        <jar basedir="build" destfile="${ant.project.name}.jar">
+            <manifest>
+                <attribute name="Version" value="${version}-${revision}" />
+                <attribute name="Author" value="Majenko Technologies" />
+                <attribute name="Compiler" value="pic32-tools" />
+                <attribute name="Core" value="${ant.project.name}" />
+                <attribute name="Platform" value="any" />
+                <attribute name="Family" value="pic32" />
+                <attribute name="Description" value="Test version of the chipKIT core" />
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="install" depends="build">
+        <copy file="${ant.project.name}.jar" todir="/var/www/uecide/plugins-61a/cores" />
+        <move file="${ant.project.name}.jar" todir="/var/www/uecide/plugins/cores" />
+    </target>
+
+    <target name="clean">
+        <delete dir="build" />
+        <delete file="${ant.project.name}.jar" />
+    </target>
+
+</project>

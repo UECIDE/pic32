@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<project name="pic32-tools" default="build">
+
+    <property name="version" value="20130228" />
+    <property name="revision" value="3" />
+
+    <target name="build" depends="structure,macosx,linux,pi,windows">
+    </target>
+
+    <target name="structure">
+        <mkdir dir="files" />
+    </target>
+
+    <target name="install" depends="build">
+        <copy file="pic32-tools-linux.jar" todir="/var/www/uecide/plugins-61a/compilers" />
+        <move file="pic32-tools-linux.jar" todir="/var/www/uecide/plugins/compilers" />
+
+        <copy file="pic32-tools-pi.jar" todir="/var/www/uecide/plugins-61a/compilers" />
+        <move file="pic32-tools-pi.jar" todir="/var/www/uecide/plugins/compilers" />
+
+        <copy file="pic32-tools-macosx.jar" todir="/var/www/uecide/plugins-61a/compilers" />
+        <move file="pic32-tools-macosx.jar" todir="/var/www/uecide/plugins/compilers" />
+
+        <copy file="pic32-tools-windows.jar" todir="/var/www/uecide/plugins-61a/compilers" />
+        <move file="pic32-tools-windows.jar" todir="/var/www/uecide/plugins/compilers" />
+    </target>
+
+    <target name="macosx">
+        <get src="http://chipkit.s3.amazonaws.com/compilers/pic32-tools-chipKIT-cxx-master-Darwin-image-${version}.zip" 
+            dest="files/pic32-tools-darwin.zip" usetimestamp="true" />    
+        <mkdir dir="build" />
+        <unzip dest="build" src="files/pic32-tools-darwin.zip" overwrite="false" />
+        <copy file="compiler.txt" todir="build/pic32-tools/" />
+        <copy file="files/libpic32/mips16/libpic32.a" tofile="build/pic32-tools/pic32mx/lib/mips16/libpic32.a" overwrite="true" />
+        <copy file="files/libpic32/libpic32.a" tofile="build/pic32-tools/pic32mx/lib/libpic32.a" overwrite="true" />
+        <replace file="build/pic32-tools/compiler.txt" token="%VERSION%" value="${version}" />
+        <replace file="build/pic32-tools/compiler.txt" token="%REVISION%" value="${revision}" />
+        <jar basedir="build" destfile="pic32-tools-macosx.jar">
+            <manifest>
+                <attribute name="Version" value="${version}-${revision}" />
+                <attribute name="Author" value="Majenko Technologies" />
+                <attribute name="Compiler" value="pic32-tools" />
+                <attribute name="Family" value="pic32" />
+                <attribute name="Platform" value="macosx" />
+                <attribute name="Arch" value="any" />
+            </manifest>
+        </jar>
+        <delete dir="build" />
+    </target>
+
+    <target name="linux">
+        <get src="http://chipkit.s3.amazonaws.com/compilers/pic32-tools-chipKIT-cxx-master-Linux32-image-${version}.zip" 
+            dest="files/pic32-tools-linux-32.zip" usetimestamp="true" />    
+        <mkdir dir="build" />
+        <unzip dest="build" src="files/pic32-tools-linux-32.zip" overwrite="false" />
+        <copy file="compiler.txt" todir="build/pic32-tools/" />
+        <copy file="files/libpic32/mips16/libpic32.a" tofile="build/pic32-tools/pic32mx/lib/mips16/libpic32.a" overwrite="true" />
+        <copy file="files/libpic32/libpic32.a" tofile="build/pic32-tools/pic32mx/lib/libpic32.a" overwrite="true" />
+        <replace file="build/pic32-tools/compiler.txt" token="%VERSION%" value="${version}" />
+        <replace file="build/pic32-tools/compiler.txt" token="%REVISION%" value="${revision}" />
+        <jar basedir="build" destfile="pic32-tools-linux.jar">
+            <manifest>
+                <attribute name="Version" value="${version}-${revision}" />
+                <attribute name="Author" value="Majenko Technologies" />
+                <attribute name="Compiler" value="pic32-tools" />
+                <attribute name="Family" value="pic32" />
+                <attribute name="Platform" value="linux" />
+                <attribute name="Arch" value="i386,amd64" />
+            </manifest>
+        </jar>
+        <delete dir="build" />
+    </target>
+
+    <target name="pi">
+        <get src="http://chipkit.s3.amazonaws.com/compilers/pic32-tools-chipKIT-cxx-master-arm-linux-image.zip" 
+            dest="files/pic32-tools-linux-arm.zip" usetimestamp="true" />    
+        <mkdir dir="build" />
+        <unzip dest="build" src="files/pic32-tools-linux-arm.zip" overwrite="false" />
+        <copy file="compiler.txt" todir="build/pic32-tools/" />
+        <copy file="files/libpic32/mips16/libpic32.a" tofile="build/pic32-tools/pic32mx/lib/mips16/libpic32.a" overwrite="true" />
+        <copy file="files/libpic32/libpic32.a" tofile="build/pic32-tools/pic32mx/lib/libpic32.a" overwrite="true" />
+        <replace file="build/pic32-tools/compiler.txt" token="%VERSION%" value="${version}" />
+        <replace file="build/pic32-tools/compiler.txt" token="%REVISION%" value="${revision}" />
+        <jar basedir="build" destfile="pic32-tools-pi.jar">
+            <manifest>
+                <attribute name="Version" value="${version}-${revision}" />
+                <attribute name="Author" value="Majenko Technologies" />
+                <attribute name="Compiler" value="pic32-tools" />
+                <attribute name="Family" value="pic32" />
+                <attribute name="Platform" value="linux" />
+                <attribute name="Arch" value="armhf" />
+            </manifest>
+        </jar>
+        <delete dir="build" />
+    </target>
+
+    <target name="windows">
+        <get src="http://chipkit.s3.amazonaws.com/compilers/pic32-tools-chipKIT-cxx-master-win32-image-${version}.zip" 
+            dest="files/pic32-tools-windows.zip" usetimestamp="true" />    
+        <mkdir dir="build" />
+        <unzip dest="build" src="files/pic32-tools-windows.zip" overwrite="false" />
+        <copy file="compiler.txt" todir="build/pic32-tools/" />
+        <copy file="files/libpic32/mips16/libpic32.a" tofile="build/pic32-tools/pic32mx/lib/mips16/libpic32.a" overwrite="true" />
+        <copy file="files/libpic32/libpic32.a" tofile="build/pic32-tools/pic32mx/lib/libpic32.a" overwrite="true" />
+        <replace file="build/pic32-tools/compiler.txt" token="%VERSION%" value="${version}" />
+        <replace file="build/pic32-tools/compiler.txt" token="%REVISION%" value="${revision}" />
+        <jar basedir="build" destfile="pic32-tools-windows.jar">
+            <manifest>
+                <attribute name="Version" value="${version}-${revision}" />
+                <attribute name="Author" value="Majenko Technologies" />
+                <attribute name="Compiler" value="pic32-tools" />
+                <attribute name="Family" value="pic32" />
+                <attribute name="Platform" value="windows" />
+                <attribute name="Arch" value="any" />
+            </manifest>
+        </jar>
+        <delete dir="build" />
+    </target>
+
+    <target name="clean">
+        <delete dir="build" />
+        <delete file="pic32-tools-linux.jar" />
+        <delete file="pic32-tools-pi.jar" />
+        <delete file="pic32-tools-macosx.jar" />
+        <delete file="pic32-tools-windows.jar" />
+    </target>
+
+</project>

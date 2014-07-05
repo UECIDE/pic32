@@ -1,5 +1,5 @@
 variant=chipkit_Pi
-name=chipKIT Pi
+description=chipKIT Pi
 group=chipKIT
 platform=pic32
 board=_BOARD_CHIPKIT_PI_
@@ -18,3 +18,4 @@ version=0.5
 revision=1
 core=chipKIT
 manual=doc/ChipKIT Pi - Getting Started.pdf
+name=chipkit_Pi

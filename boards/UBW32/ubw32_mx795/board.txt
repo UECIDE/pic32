@@ -1,5 +1,5 @@
 variant=ubw32_mx795
-name=Pic32 UBW32-MX795
+description=Pic32 UBW32-MX795
 group=UBW32
 platform=pic32
 board=_BOARD_UBW32_MX795_
@@ -18,3 +18,4 @@ family=pic32
 version=0.4
 revision=1
 core=chipKIT
+name=ubw32_mx795

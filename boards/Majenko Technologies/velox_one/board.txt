@@ -1,4 +1,4 @@
-name=Velox One
+description=Velox One
 
 # new items
 group=Majenko Technologies
@@ -18,13 +18,15 @@ build.core=pic32
 build.variant=velox_one
 
 upload.mphid.name=Upload using Microchip HID bootloader
-upload.mphid.command.windows=${board.root}/tools/windows/mphidflash::-w::${filename.hex}
-upload.mphid.command.macosx=${board.root}/tools/osx/mphidflash::-w::${filename.hex}
-upload.mphid.command.linux=${board.root}/tools/linux/pic32prog::-p::${filename.hex}
+upload.mphid.using=hid
+upload.mphid.command.windows=${board.root}/tools/windows/mphidflash::-w::${filename}.hex
+upload.mphid.command.macosx=${board.root}/tools/osx/mphidflash::-w::${filename}.hex
+upload.mphid.command.linux=${board.root}/tools/linux/pic32prog::-p::${filename}.hex
 
 sketch.upload=mphid::avrdude
 
 family=pic32
 version=0.5
-revision=1
+revision=3
 core=chipKIT
+name=velox_one

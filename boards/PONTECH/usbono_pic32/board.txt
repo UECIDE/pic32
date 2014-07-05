@@ -1,5 +1,5 @@
 variant=usbono_pic32
-name=PONTECH UAV100
+description=PONTECH UAV100
 group=PONTECH
 platform=pic32
 board=_BOARD_PONTECH_UAV100_
@@ -24,3 +24,4 @@ family=pic32
 version=0.3
 revision=1
 core=chipKIT
+name=usbono_pic32

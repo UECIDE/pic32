@@ -1,5 +1,5 @@
 variant=chipkit_DP32
-name=chipKIT DP32
+description=chipKIT DP32
 group=chipKIT
 platform=pic32
 board=_BOARD_DP32_
@@ -18,3 +18,4 @@ version=0.5
 revision=1
 core=chipKIT
 manual=doc/chipKIT_DP32_rm.pdf
+name=chipkit_DP32

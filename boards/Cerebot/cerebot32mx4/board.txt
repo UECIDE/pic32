@@ -1,5 +1,5 @@
 variant=cerebot32mx4
-name=Cerebot 32MX4
+description=Cerebot 32MX4
 group=Cerebot
 platform=pic32
 board=_BOARD_CEREBOT_32MX4_
@@ -24,3 +24,4 @@ family=pic32
 version=0.3
 revision=1
 core=chipKIT
+name=cerebot32mx4

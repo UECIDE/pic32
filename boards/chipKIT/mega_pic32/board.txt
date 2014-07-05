@@ -1,5 +1,5 @@
 variant=mega_pic32
-name=chipKIT MAX32
+description=chipKIT MAX32
 group=chipKIT
 platform=pic32
 board=_BOARD_MEGA_
@@ -18,3 +18,4 @@ version=0.6
 revision=1
 core=chipKIT
 manual=doc/chipKIT Max32_rm.pdf
+name=mega_pic32

@@ -1,5 +1,5 @@
 variant=cui32
-name=Pic32 CUI32-Development Stick
+description=Pic32 CUI32-Development Stick
 group=CUI32
 platform=pic32
 board=_BOARD_CUI32_
@@ -24,3 +24,4 @@ family=pic32
 version=0.3
 revision=1
 core=chipKIT
+name=cui32

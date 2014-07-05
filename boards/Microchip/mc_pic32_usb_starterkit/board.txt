@@ -1,5 +1,5 @@
 variant=mc_pic32_usb_starterkit
-name=Microchip PIC32 USB Starter kit II
+description=Microchip PIC32 USB Starter kit II
 group=Microchip
 platform=pic32
 board=_BOARD_PIC32_USB_STARTER_KIT_
@@ -24,3 +24,4 @@ family=pic32
 version=0.3
 revision=1
 core=chipKIT
+name=mc_pic32_usb_starterkit

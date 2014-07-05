@@ -4,14 +4,14 @@ compiler=pic32-tools
 
 core.flags=-DF_CPU=${build.f_cpu}::-DARDUINO=${core.version}::-D${board}::-DMPIDEVER=${core.revision}::-DMPIDE=${core.version}
 
-core.path=api
+core.library.api=api
 core.header=WProgram.h
 core.version=%VERSION%
 version=%VERSION%
 core.revision=%REVISION%
 revision=%REVISION%
 
-core.ldflags=-T::${find:${ldscript}}::-T::${core.root}/${core.path}/chipKIT-application-COMMON.ld
+core.ldflags=-T::${find:${board.root}::${core.root}/api,${ldscript}}::-T::${core.root}/api/chipKIT-application-COMMON.ld
 
 library.path=libraries
 examples.path=examples

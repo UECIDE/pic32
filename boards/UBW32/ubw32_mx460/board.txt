@@ -1,5 +1,5 @@
 variant=ubw32_mx460
-name=Pic32 UBW32-MX460
+description=Pic32 UBW32-MX460
 group=UBW32
 platform=pic32
 board=_BOARD_UBW32_MX460_
@@ -24,3 +24,4 @@ family=pic32
 version=0.4
 revision=1
 core=chipKIT
+name=ubw32_mx460
