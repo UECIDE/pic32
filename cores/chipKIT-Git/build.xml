@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<project name="chipKIT-Git" default="build">
+
+    <taskdef resource="net/sf/antcontrib/antcontrib.properties">
+        <classpath>
+            <pathelement location="/usr/share/java/ant-contrib.jar"/>
+        </classpath>
+    </taskdef>
+
+    <property name="version" value="157" />
+    <property name="revision" value="16778000" />
+
+    <target name="build">
+        <mkdir dir="files" />
+        <exec executable="git" dir="files" failonerror="false">
+            <arg value="clone" />
+            <arg value="git@github.com:chipKIT32/chipKIT32-MAX.git" />
+        </exec>
+        <exec executable="git" dir="files/chipKIT32-MAX">
+            <arg value="pull" />
+        </exec>
+        <exec executable="git" dir="files/chipKIT32-MAX" outputproperty="buildno">
+            <arg value="rev-list" />
+            <arg value="--count" />
+            <arg value="HEAD" />
+        </exec>
+
+        <math result="revision" datatype="int" operation="+" operand1="10000000" operand2="${buildno}" />
+
+        <mkdir dir="build" />
+        <mkdir dir="build/${ant.project.name}" />
+        <mkdir dir="build/${ant.project.name}/api" />
+        <mkdir dir="build/${ant.project.name}/icons" />
+        <mkdir dir="build/${ant.project.name}/examples" />
+        <mkdir dir="build/${ant.project.name}/libraries" />
+        <mkdir dir="build/${ant.project.name}/tools" />
+        <copy todir="build/${ant.project.name}/api"> <fileset dir="files/chipKIT32-MAX/hardware/pic32/cores/pic32/" includes="**/*"/> </copy>
+        <copy todir="build/${ant.project.name}/libraries"> <fileset dir="files/chipKIT32-MAX/hardware/pic32/libraries/" includes="**/*"/> </copy>
+        <copy todir="build/${ant.project.name}/examples"> <fileset dir="files/chipKIT32-MAX/build/shared/examples/" includes="**/*"/> </copy>
+        <copy todir="build/${ant.project.name}/icons"> <fileset dir="icons/" includes="**/*"/> </copy>
+
+        <delete dir="build/${ant.project.name}/examples/ArduinoISP" />
+        <copy todir="build/${ant.project.name}/tools"> <fileset dir="tools/" includes="**/*"/> </copy>
+
+        <copy todir="build/${ant.project.name}/tools/windows" file="files/chipKIT32-MAX/build/windows/dist/avrdude.conf" overwrite="true" />
+        <copy todir="build/${ant.project.name}/tools/linux32" file="files/chipKIT32-MAX/build/linux/dist/tools/avrdude.conf" overwrite="true" />
+        <copy todir="build/${ant.project.name}/tools/linux64" file="files/chipKIT32-MAX/build/linux/dist/tools/avrdude.conf" overwrite="true" />
+        <copy todir="build/${ant.project.name}/tools/linux_arm" file="files/chipKIT32-MAX/build/macosx/dist/avrdude.conf" overwrite="true" />
+        <copy todir="build/${ant.project.name}/tools/macosx" file="files/chipKIT32-MAX/build/macosx/dist/avrdude.conf" overwrite="true" />
+
+        <copy todir="build/chipKIT/libraries"> <fileset dir="files/chipKIT32-MAX/hardware/pic32/libraries/" includes="**/*"/> </copy>
+
+        <copy todir="build/${ant.project.name}" file="files/chipKIT32-MAX/build/shared/lib/keywords.txt" />
+        <copy todir="build/${ant.project.name}" file="core.txt" overwrite="true"/>
+        <replace file="build/${ant.project.name}/core.txt" token="%VERSION%" value="${version}" />
+        <replace file="build/${ant.project.name}/core.txt" token="%REVISION%" value="${revision}" />
+
+        <jar basedir="build" destfile="${ant.project.name}.jar">
+            <manifest>
+                <attribute name="Version" value="${version}-${revision}" />
+                <attribute name="Author" value="chipKIT" />
+                <attribute name="Compiler" value="pic32-tools-MZ" />
+                <attribute name="Core" value="${ant.project.name}" />
+                <attribute name="Platform" value="any" />
+                <attribute name="Family" value="pic32" />
+                <attribute name="Description" value="Git version of chipKIT" />
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="install" depends="build">
+        <move file="${ant.project.name}.jar" todir="/var/www/uecide/plugins-088/cores" />
+    </target>
+
+    <target name="clean">
+        <delete dir="files" />
+        <delete dir="build" />
+        <delete file="${ant.project.name}.jar" />
+    </target>
+
+</project>

@@ -26,8 +26,7 @@
     </target>
 
     <target name="install" depends="build">
-        <copy file="${ant.project.name}.jar" todir="/var/www/uecide/plugins-61a/cores" />
-        <move file="${ant.project.name}.jar" todir="/var/www/uecide/plugins/cores" />
+        <move file="${ant.project.name}.jar" todir="/var/www/uecide/plugins-088/cores" />
     </target>
 
     <target name="clean">

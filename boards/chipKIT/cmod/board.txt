@@ -4,7 +4,7 @@ group=chipKIT
 platform=pic32
 board=_BOARD_CMOD_
 board.flags
-ldscript=chipKIT-application-32MX150F128.ld
+ldscript=chipKIT-application-32MX150F128${upload.${prefs:board.${prefs:board}.programmer}.ldsuffix}.ld
 upload.protocol=stk500v2
 upload.maximum_size=122880
 upload.speed=115200
@@ -14,7 +14,7 @@ build.core=pic32
 build.variant=Cmod
 family=pic32
 version=0.4
-revision=1
+revision=2
 core=chipKIT
 manual=doc/chipKIT-Cmod_RM_RevE_1.pdf
 name=cmod

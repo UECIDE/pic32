@@ -173,6 +173,20 @@ DSPI::init(uint8_t irqErr, uint8_t irqRx, uint8_t irqTx, isrFunc isrHandler) {
 
     isr = isrHandler;
 }
+#if defined(__PIC32MX1XX__) || defined(__PIC32MX2XX__)
+void DSPI::begin(uint8_t miso, uint8_t mosi) {
+    pinMISO = miso;
+    pinMOSI = mosi;
+    begin(pinSS);
+}
+
+void DSPI::begin(uint8_t miso, uint8_t mosi, uint8_t ss) {
+    pinMISO = miso;
+    pinMOSI = mosi;
+    pinSS = ss;
+    begin(pinSS);
+}
+#endif
 
 /* ------------------------------------------------------------ */
 /***	DSPI::begin

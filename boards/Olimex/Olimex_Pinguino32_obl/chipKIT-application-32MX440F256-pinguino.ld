@@ -39,7 +39,8 @@ MEMORY
   config2                    : ORIGIN = 0xBFC02FF4, LENGTH = 4
   config1                    : ORIGIN = 0xBFC02FF8, LENGTH = 4
   config0                    : ORIGIN = 0xBFC02FFC, LENGTH = 4
-  kseg1_data_mem       (w!x) : ORIGIN = 0xA0000000, LENGTH = 0x8000
+  boot_software_key          : ORIGIN = 0xA0000000, LENGTH = 0x4
+  kseg1_data_mem       (w!x) : ORIGIN = 0xA0000004, LENGTH = 0x7FFC
   sfrs                       : ORIGIN = 0xBF800000, LENGTH = 0x100000
   configsfrs                 : ORIGIN = 0xBFC02FF0, LENGTH = 0x10
 }
@@ -51,11 +52,11 @@ _ebase_address  	    = ORIGIN(exception_mem);
 _IMAGE_PTR_TABLE       	= _ebase_address + 0x0F8;
 _IMAGE_HEADER_ADDR      = _ebase_address + 0x0FC;
 _GEN_EXCPT_ADDR         = _ebase_address + 0x180;
-_RESET_ADDR             = ORIGIN(kseg0_program_mem);
+_RESET_ADDR             = 0x9D006000;
 _EEPROM_ADDR            = ORIGIN(kseg0_eeprom_mem);
-_BEV_EXCPT_ADDR         = 0xBFC00380;
-_DBG_EXCPT_ADDR         = 0xBFC00480;
-_DBG_CODE_ADDR          = ORIGIN(debug_exec_mem);
+_BEV_EXCPT_ADDR         = 0x9D006380;
+_DBG_EXCPT_ADDR         = 0x9D006480;
+_DBG_CODE_ADDR          = 0xBFC02000;
 
 /*************************************************************************
  *  Bootloader program directives.
@@ -123,11 +124,29 @@ _JUMP_ADDR              = _RESET_ADDR;
 
 SECTIONS
 {
+  .boot_software_key_sec : {
+    *(.boot_software_key_sec)
+  } > boot_software_key
+
+  .config_BFC02FF0 : {
+    KEEP(*(.config_BFC02FF0))
+  } > config3
+  .config_BFC02FF4 : {
+    KEEP(*(.config_BFC02FF4))
+  } > config2
+  .config_BFC02FF8 : {
+    KEEP(*(.config_BFC02FF8))
+  } > config1
+  .config_BFC02FFC : {
+    KEEP(*(.config_BFC02FFC))
+  } > config0
+
+
   /* Boot Sections */
   .reset _RESET_ADDR :
   {
     KEEP(*(.reset))
-  } > kseg0_program_mem
+  } > kseg1_boot_mem
 }
 
 /* From here out every linker script is the same, so just include it */

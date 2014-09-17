@@ -4,7 +4,7 @@ group=chipKIT
 platform=pic32
 board=_BOARD_CHIPKIT_PI_
 board.flags=
-ldscript=chipKIT-application-32MX250F128.ld
+ldscript=chipKIT-application-32MX250F128${upload.${prefs:board.${prefs:board}.programmer}.ldsuffix}.ld
 bootloader=bootloader
 upload.protocol=stk500v2
 upload.maximum_size=122880
@@ -14,8 +14,27 @@ build.f_cpu=40000000L
 build.core=pic32
 build.variant=ChipKIT_Pi
 family=pic32
-version=0.5
-revision=1
+version=0.6
+revision=2
 core=chipKIT
 manual=doc/ChipKIT Pi - Getting Started.pdf
 name=chipkit_Pi
+
+mdns.model.key=board
+mdns.model.value=chipkit_Pi
+mdns.version=distro_version
+mdns.service=_raspberrypi._tcp.local.
+mdns.programmer=pissh
+
+board.user=ckpi
+
+upload.pissh.name=Upload via a remote Pi at ${ip}
+upload.pissh.using=script
+upload.pissh.quiet=-qq
+upload.pissh.script.0=__builtin_echo::Uploading firmware image...
+upload.pissh.script.1=__builtin_scp::${build.path}/${filename}.hex::${board.user}@${ip}:/tmp/${filename}.hex
+upload.pissh.script.2=__builtin_echo::Programming target...
+upload.pissh.script.3=__builtin_ssh::${board.user}@${ip}::ckpi-program && avrdude -V -p${build.mcu} -P/dev/ttyAMA0 -b${upload.speed} -C/etc/avrdude-ckpi.conf -cstk500v2 -Uflash:w:/tmp/${filename}.hex:i ${verbose} && ckpi-reboot
+upload.pissh.script.4=__builtin_echo::Done
+
+sketch.upload=avrdude::pissh

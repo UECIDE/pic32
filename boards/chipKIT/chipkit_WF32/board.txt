@@ -4,7 +4,7 @@ group=chipKIT
 platform=pic32
 board=_BOARD_WF32_
 board.flags=
-ldscript=chipKIT-application-32MX695F512.ld
+ldscript=chipKIT-application-32MX695F512${upload.${prefs:board.${prefs:board}.programmer}.ldsuffix}.ld
 upload.protocol=stk500v2
 upload.maximum_size=520192
 upload.speed=115200
@@ -14,7 +14,7 @@ build.core=pic32
 build.variant=WF32
 family=pic32
 version=0.5
-revision=1
+revision=2
 core=chipKIT
 manual=doc/chipKIT-WF32_RM_RevB_1.pdf
 

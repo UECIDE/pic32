@@ -60,3 +60,10 @@ options.mips.mips32r2.name=mips32r2
 options.mips.mips32r2.flags=-mips32r2
 options.mips.mips16.name=mips16
 options.mips.mips16.flags=-mips16
+
+icon.128=icons/retro128.png
+icon.64=icons/retro64.png
+icon.48=icons/retro48.png
+icon.32=icons/retro32.png
+icon.22=icons/retro22.png
+icon.16=icons/retro16.png

@@ -1,5 +1,5 @@
 name=chipKIT
-description=The chipKIT Arduino compatability core
+description=chipKIT
 compiler=pic32-tools
 
 core.flags=-DF_CPU=${build.f_cpu}::-DARDUINO=${core.version}::-D${board}::-DMPIDEVER=${core.revision}::-DMPIDE=${core.version}
@@ -30,8 +30,10 @@ upload.avrdude.verbose=-v
 upload.avrdude.quiet=-q::-q
 upload.avrdude.dtr=yes
 upload.avrdude.rts=yes
+upload.avrdude.ldsuffix=
 
 upload.pickit2.name=PicKit 2
+upload.pickit2.ldsuffix=-nobootloader
 upload.pickit2.command.linux_arm=${core.root}/tools/linux_arm/pic32prog::-p::${filename}.hex
 upload.pickit2.command.linux_i386=${core.root}/tools/linux32/pic32prog::-p::${filename}.hex
 upload.pickit2.command.linux_amd64=${core.root}/tools/linux64/pic32prog::-p::${filename}.hex
@@ -45,3 +47,10 @@ sketch.upload=avrdude::pickit2
 bootloader.upload=pickit2
 
 family=pic32
+
+icon.128=icons/mpide128.png
+icon.64=icons/mpide64.png
+icon.48-icons/mpide48.png
+icon.32=icons/mpide32.png
+icon.22=icons/mpide22.png
+icon.16=icons/mpide16.png

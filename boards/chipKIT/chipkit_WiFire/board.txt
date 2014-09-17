@@ -1,0 +1,27 @@
+############################################################
+name=chipkit_WiFire
+description=chipKIT WiFire
+group=chipKIT
+
+# new items
+platform=pic32
+board=_BOARD_WIFIRE_
+board.define=
+ccflags=ffff
+ldscript=MZ-application-32MZ2048ECX.ld
+# end of new items
+
+upload.protocol=stk500v2
+upload.maximum_size=520192
+upload.speed=115200
+
+build.mcu=32MZ2048ECG100
+build.f_cpu=200000000UL
+build.core=chipKIT-Git
+ldcommon=chipKIT-application-COMMON-MZ.ld
+build.variant=chipkit_WiFire
+version = 1.0
+revision = 1
+family=pic32
+
+############################################################

@@ -222,7 +222,12 @@ const static uint8_t SCK  = 102;		// PIC32 SCK2
 #define digitalPinToTimerIC(P)  ( (digital_pin_to_timer_PGM[P] & _MSK_TIMER_IC)  )
 #define digitalPinToTimerTCK(P) ( (digital_pin_to_timer_PGM[P] & _MSK_TIMER_TCK) )
 #define	digitalPinToTimer(P)	digitalPinToTimerOC(P)
+
+#ifdef portRegisters
+#undef portRegisters
+#endif
 #define portRegisters(P) ( port_to_tris_PGM[P] )
+
 #define portModeRegister(P) ( (volatile uint32_t *)port_to_tris_PGM[P] )
 #define portInputRegister(P) ( (volatile uint32_t *)(port_to_tris_PGM[P] + 0x0010) )
 #define portOutputRegister(P) ( (volatile uint32_t *)(port_to_tris_PGM[P] + 0x0020) )
@@ -231,12 +236,20 @@ const static uint8_t SCK  = 102;		// PIC32 SCK2
 //#define	digitalPinToAnalog(P) ( (((P) > 15) && ((P) < 32)) ? (P)-16 : NOT_ANALOG_PIN )
 // This definition can be used for the non-default case where there
 // is a mapping table to go from digital pin to analog pin
+
+#ifdef digitalPinToAnalog
+#undef digitalPinToAnalog
+#endif
 #define	digitalPinToAnalog(P) ( digital_pin_to_analog_PGM[P] )
 
 // This definition can be used for the default one-to-one mapping
 //#define analogInPinToChannel(P) ( P )
 // This definition is used when there isn't a one-to-one mapping
 // This uses a table to do the mapping.
+
+#ifdef analogInPinToChannel
+#undef analogInPinToChannel
+#endif
 #define analogInPinToChannel(P) ( analog_pin_to_channel_PGM[P]  )
 
 /* ------------------------------------------------------------ */

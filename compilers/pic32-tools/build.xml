@@ -2,7 +2,7 @@
 <project name="pic32-tools" default="build">
 
     <property name="version" value="20130228" />
-    <property name="revision" value="3" />
+    <property name="revision" value="4" />
 
     <target name="build" depends="structure,macosx,linux,pi,windows">
     </target>
@@ -12,17 +12,9 @@
     </target>
 
     <target name="install" depends="build">
-        <copy file="pic32-tools-linux.jar" todir="/var/www/uecide/plugins-61a/compilers" />
-        <move file="pic32-tools-linux.jar" todir="/var/www/uecide/plugins/compilers" />
-
-        <copy file="pic32-tools-pi.jar" todir="/var/www/uecide/plugins-61a/compilers" />
-        <move file="pic32-tools-pi.jar" todir="/var/www/uecide/plugins/compilers" />
-
-        <copy file="pic32-tools-macosx.jar" todir="/var/www/uecide/plugins-61a/compilers" />
-        <move file="pic32-tools-macosx.jar" todir="/var/www/uecide/plugins/compilers" />
-
-        <copy file="pic32-tools-windows.jar" todir="/var/www/uecide/plugins-61a/compilers" />
-        <move file="pic32-tools-windows.jar" todir="/var/www/uecide/plugins/compilers" />
+        <move todir="/var/www/uecide/plugins-088/compilers">
+            <fileset dir="." includes="pic32-tools-*.jar" />
+        </move>
     </target>
 
     <target name="macosx">

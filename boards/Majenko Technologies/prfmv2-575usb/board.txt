@@ -37,6 +37,14 @@ sketch.upload=mphid::avrdude
 
 family=pic32
 version=0.5
-revision=1
+revision=3
 core=chipKIT
 name=prfmv2-575usb
+
+icon.128=icons/majenko128.png
+icon.64=icons/majenko64.png
+icon.48=icons/majenko48.png
+icon.32=icons/majenko32.png
+icon.22=icons/majenko22.png
+icon.16=icons/majenko16.png
+

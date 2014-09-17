@@ -3,9 +3,9 @@ description=chipKIT DP32
 group=chipKIT
 platform=pic32
 board=_BOARD_DP32_
-board.flags=-D_USE_USB_FOR_SERIAL_
+board.flags=
 ccflags=-Map="map.map"
-ldscript=chipKIT-application-32MX250F128.ld
+ldscript=chipKIT-application-32MX250F128${upload.${prefs:board.${prefs:board}.programmer}.ldsuffix}.ld
 upload.protocol=stk500v2
 upload.maximum_size=122880
 upload.speed=115200
@@ -15,7 +15,16 @@ build.core=pic32
 build.variant=DP32
 family=pic32
 version=0.5
-revision=1
+revision=3
 core=chipKIT
 manual=doc/chipKIT_DP32_rm.pdf
 name=chipkit_DP32
+
+options.usb.name=USB Settings
+options.usb.default=withSerial
+options.usb.purge=true
+options.usb.withoutSerial.name=Disable USB Serial
+options.usb.withoutSerial.flags=
+options.usb.withSerial.name=Enable USB Serial
+options.usb.withSerial.flags=-D_USE_USB_FOR_SERIAL_
+

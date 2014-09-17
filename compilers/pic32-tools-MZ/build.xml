@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <project name="pic32-tools-MZ" default="build">
 
-    <property name="version" value="20130228" />
-    <property name="revision" value="1" />
+    <property name="version" value="20140530" />
+    <property name="revision" value="3" />
 
     <target name="build" depends="structure,macosx,linux,pi,windows">
     </target>
@@ -12,17 +12,23 @@
     </target>
 
     <target name="install" depends="build">
-        <move file="pic32-tools-MZ-linux.jar" todir="/var/www/uecide/plugins/compilers" />
-        <move file="pic32-tools-MZ-pi.jar" todir="/var/www/uecide/plugins/compilers" />
-        <move file="pic32-tools-MZ-macosx.jar" todir="/var/www/uecide/plugins/compilers" />
-        <move file="pic32-tools-MZ-windows.jar" todir="/var/www/uecide/plugins/compilers" />
+        <move file="pic32-tools-MZ-linux.jar" todir="/var/www/uecide/plugins-088/compilers" />
+        <move file="pic32-tools-MZ-pi.jar" todir="/var/www/uecide/plugins-088/compilers" />
+        <move file="pic32-tools-MZ-macosx.jar" todir="/var/www/uecide/plugins-088/compilers" />
+        <move file="pic32-tools-MZ-windows.jar" todir="/var/www/uecide/plugins-088/compilers" />
     </target>
 
     <target name="macosx">
         <delete dir="build" />
         <mkdir dir="build" />
-        <unzip dest="build" src="../../cores/chipKIT-MZ/files/chipKIT32-MAX/build/macosx/dist/pic32-tools-chipKIT-cxx-master-Darwin-image.zip" overwrite="false" />
+            <get src="https://s3.amazonaws.com/chipkit/compilers/pic32-tools-Darwin-image-20140530.zip"
+                 dest="files/pic32-tools-darwin.zip"
+                 verbose="false"
+                 usetimestamp="true"/>
+
+        <unzip dest="build" src="files/pic32-tools-darwin.zip" overwrite="false" />
         <move file="build/pic32-tools" tofile="build/pic32-tools-MZ" />
+        <copy file="libpic32.a" todir="build/pic32-tools-MZ/pic32mx/lib/" overwrite="true" />
         <copy file="compiler.txt" todir="build/pic32-tools-MZ/" />
         <replace file="build/pic32-tools-MZ/compiler.txt" token="%VERSION%" value="${version}" />
         <replace file="build/pic32-tools-MZ/compiler.txt" token="%REVISION%" value="${revision}" />
@@ -42,8 +48,14 @@
     <target name="linux">
         <delete dir="build" />
         <mkdir dir="build" />
-        <unzip dest="build" src="../../cores/chipKIT-MZ/files/chipKIT32-MAX/build/linux/dist/pic32-tools-chipKIT-cxx-master-Linux-image.zip" overwrite="false" />
+        <get src="https://chipkit.s3.amazonaws.com/compilers/pic32-tools-Linux32-image-20140530.zip"
+             dest="files/pic32-tools-linux.zip"
+             verbose="false"
+             usetimestamp="true"/>
+
+        <unzip dest="build" src="files/pic32-tools-linux.zip" overwrite="false" />
         <move file="build/pic32-tools" tofile="build/pic32-tools-MZ" />
+        <copy file="libpic32.a" todir="build/pic32-tools-MZ/pic32mx/lib/" overwrite="true" />
         <copy file="compiler.txt" todir="build/pic32-tools-MZ/" />
         <replace file="build/pic32-tools-MZ/compiler.txt" token="%VERSION%" value="${version}" />
         <replace file="build/pic32-tools-MZ/compiler.txt" token="%REVISION%" value="${revision}" />
@@ -63,8 +75,15 @@
     <target name="pi">
         <delete dir="build" />
         <mkdir dir="build" />
-        <unzip dest="build" src="../../cores/chipKIT-MZ/files/chipKIT32-MAX/build/raspberrypi/dist/pic32-tools-chipKIT-cxx-master-arm-linux-image.zip" overwrite="false" />
+
+    <get src="https://chipkit.s3.amazonaws.com/compilers/pic32-tools-arm-linux-image-20140530.zip"
+         dest="files/pic32-tools-pi.zip"
+         verbose="false"
+         usetimestamp="true"/>
+
+        <unzip dest="build" src="files/pic32-tools-pi.zip" overwrite="false" />
         <move file="build/pic32-tools" tofile="build/pic32-tools-MZ" />
+        <copy file="libpic32.a" todir="build/pic32-tools-MZ/pic32mx/lib/" overwrite="true" />
         <copy file="compiler.txt" todir="build/pic32-tools-MZ/" />
         <replace file="build/pic32-tools-MZ/compiler.txt" token="%VERSION%" value="${version}" />
         <replace file="build/pic32-tools-MZ/compiler.txt" token="%REVISION%" value="${revision}" />
@@ -84,8 +103,14 @@
     <target name="windows">
         <delete dir="build" />
         <mkdir dir="build" />
-        <unzip dest="build" src="../../cores/chipKIT-MZ/files/chipKIT32-MAX/build/windows/dist/pic32-tools-chipKIT-cxx-master-win32-image.zip" overwrite="false" />
+     <get src="https://chipkit.s3.amazonaws.com/compilers/pic32-tools-win32-image-20140530.zip "
+         dest="files/pic32-tools-windows.zip"
+         verbose="false"
+         usetimestamp="true"/>
+
+        <unzip dest="build" src="files/pic32-tools-windows.zip" overwrite="false" />
         <move file="build/pic32-tools" tofile="build/pic32-tools-MZ" />
+        <copy file="libpic32.a" todir="build/pic32-tools-MZ/pic32mx/lib/" overwrite="true" />
         <copy file="compiler.txt" todir="build/pic32-tools-MZ/" />
         <replace file="build/pic32-tools-MZ/compiler.txt" token="%VERSION%" value="${version}" />
         <replace file="build/pic32-tools-MZ/compiler.txt" token="%REVISION%" value="${revision}" />

@@ -2,35 +2,39 @@
 <project name="chipKIT" default="build">
 
     <property name="version" value="0023" />
-    <property name="revision" value="15" />
+    <property name="revision" value="25" />
 
     <target name="build">
         <mkdir dir="files" />
-        <!--exec executable="git" dir="files" failonerror="false">
+        <exec executable="git" dir="files" failonerror="false">
             <arg value="clone" />
-            <arg value="- -depth" />
-            <arg value="1" />
             <arg value="git@github.com:chipKIT32/chipKIT32-MAX.git" />
         </exec>
         <exec executable="git" dir="files/chipKIT32-MAX">
             <arg value="pull" />
-        </exec-->
+        </exec>
+        <exec executable="git" dir="files/chipKIT32-MAX">
+            <arg value="checkout" />
+            <arg value="102b6bf12b2d19dffa817d887c2ec6d04bd47066" />
+        </exec>
         <mkdir dir="build" />
         <mkdir dir="build/chipKIT" />
         <mkdir dir="build/chipKIT/api" />
+        <mkdir dir="build/chipKIT/icons" />
         <mkdir dir="build/chipKIT/examples" />
         <mkdir dir="build/chipKIT/libraries" />
         <mkdir dir="build/chipKIT/tools" />
         <copy todir="build/chipKIT/api"> <fileset dir="files/chipKIT32-MAX/hardware/pic32/cores/pic32/" includes="**/*"/> </copy>
-        <copy todir="build/chipKIT/api" file="HardwareSerial_cdcacm.c" />
+        <copy todir="build/chipKIT/api" overwrite="true"> <fileset dir="api/" includes="**/*" /></copy>
         <copy todir="build/chipKIT/libraries"> <fileset dir="files/chipKIT32-MAX/hardware/pic32/libraries/" includes="**/*"/> </copy>
         <copy todir="build/chipKIT/examples"> <fileset dir="files/chipKIT32-MAX/build/shared/examples/" includes="**/*"/> </copy>
+        <copy todir="build/chipKIT/icons"> <fileset dir="icons" includes="**/*"/> </copy>
 
         <delete dir="build/chipKIT/examples/ArduinoISP" />
         <copy todir="build/chipKIT/libraries" overwrite="true"> <fileset dir="libraries/" includes="**/*"/> </copy>
         <copy todir="build/chipKIT/tools"> <fileset dir="tools/" includes="**/*"/> </copy>
         <copy todir="build/chipKIT" file="files/chipKIT32-MAX/build/shared/lib/keywords.txt" />
-        <copy todir="build/chipKIT" file="core.txt" />
+        <copy todir="build/chipKIT" file="core.txt" overwrite="true" />
         <replace file="build/chipKIT/core.txt" token="%VERSION%" value="${version}" />
         <replace file="build/chipKIT/core.txt" token="%REVISION%" value="${revision}" />
 
@@ -48,8 +52,7 @@
     </target>
 
     <target name="install" depends="build">
-        <copy file="chipKIT.jar" todir="/var/www/uecide/plugins-61a/cores" />
-        <move file="chipKIT.jar" todir="/var/www/uecide/plugins/cores" />
+        <move file="chipKIT.jar" todir="/var/www/uecide/plugins-088/cores" />
     </target>
 
     <target name="clean">

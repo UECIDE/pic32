@@ -2,11 +2,11 @@
 <project name="RetroBSD" default="build">
 
     <property name="version" value="0" />
-    <property name="revision" value="5" />
+    <property name="revision" value="7" />
 
     <target name="build">
         <mkdir dir="build/RetroBSD" />
-        <copy todir="build/RetroBSD"> <fileset dir="files" includes="**/*"/> </copy>
+        <copy todir="build/RetroBSD" overwrite="true"> <fileset dir="files" includes="**/*"/> </copy>
         <replace file="build/RetroBSD/core.txt" token="%VERSION%" value="${version}" />
         <replace file="build/RetroBSD/core.txt" token="%REVISION%" value="${revision}" />
 
@@ -24,7 +24,7 @@
     </target>
 
     <target name="install" depends="build">
-        <move file="RetroBSD.jar" todir="/var/www/uecide/plugins/cores" />
+        <move file="RetroBSD.jar" todir="/var/www/uecide/plugins-088/cores" />
     </target>
 
     <target name="clean">

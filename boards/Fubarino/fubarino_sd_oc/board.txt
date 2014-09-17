@@ -1,0 +1,37 @@
+variant=fubarino_sd_oc
+description=Fubarino SD (120MHz Overclocked)
+group=Fubarino
+platform=pic32
+board=_BOARD_FUBARINO_SD_
+board.flags=
+ccflags=ffff
+ldscript=chipKIT-application-32MX795F512${upload.${prefs:board.${prefs:board}.programmer}.ldsuffix}.ld
+upload.protocol=stk500v2
+upload.maximum_size=520192
+upload.speed=115200
+bootloader=bootloader
+bootloader.low_fuses=0xff
+bootloader.high_fuses=0xdd
+bootloader.extended_fuses=0x00
+bootloader.path=not-supported
+bootloader.file=not-supported
+bootloader.unlock_bits=0x3F
+bootloader.lock_bits=0x0F
+build.mcu=32MX795F512H
+build.f_cpu=120000000L
+build.core=pic32
+build.variant=Fubarino_SD
+family=pic32
+version=0.7
+revision=2
+core=chipKIT
+name=fubarino_sd_oc
+
+options.usb.name=USB Settings
+options.usb.default=withSerial
+options.usb.purge=true
+options.usb.withoutSerial.name=Disable USB Serial
+options.usb.withoutSerial.flags=
+options.usb.withSerial.name=Enable USB Serial
+options.usb.withSerial.flags=-D_USE_USB_FOR_SERIAL_
+

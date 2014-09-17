@@ -288,6 +288,16 @@ extern const uint8_t    digital_pin_to_analog_PGM[];
 #define _TWI_IPL		_I2C1_IPL_IPC
 #define	_TWI_SPL		_I2C1_SPL_IPC
 
+#define _TWI2_BASE      _I2C2_BASE_ADDRESS
+#define _TWI2_BUS_IRQ   _I2C2_BUS_IRQ
+#define _TWI2_SLV_IRQ   _I2C2_SLAVE_IRQ
+#define _TWI2_MST_IRQ   _I2C2_MASTER_IRQ
+#define _TWI2_VECTOR    _I2C_2_VECTOR
+#define _TWI2_IPL_ISR   _I2C2_IPL_ISR
+#define _TWI2_IPL       _I2C2_IPL_IPC
+#define _TWI2_SPL       _I2C2_SPL_IPC
+
+
 /* Declarations for Digilent DTWI library. (which doesn't yet exist)
 **		DTWI0 is on A4/A5 (see above comment).
 */

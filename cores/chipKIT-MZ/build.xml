@@ -51,7 +51,7 @@
     </target>
 
     <target name="install" depends="build">
-        <move file="chipKIT-MZ.jar" todir="/var/www/uecide/plugins/cores" />
+        <move file="chipKIT-MZ.jar" todir="/var/www/uecide/plugins-088/cores" />
     </target>
 
     <target name="clean">

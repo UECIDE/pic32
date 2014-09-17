@@ -63,8 +63,7 @@
 
     <target name="install-board">
         <basename file="${filepath}" property="file"/>
-        <copy file="${file}" todir="/var/www/uecide/plugins-61a/boards/" />
-        <move file="${file}" todir="/var/www/uecide/plugins/boards/" />
+        <move file="${file}" todir="/var/www/uecide/plugins-088/boards/" />
     </target>
 
     <target name="clean-board">

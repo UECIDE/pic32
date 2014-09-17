@@ -5,7 +5,7 @@ platform=pic32
 board=_BOARD_OLIMEX_PIC32_PINGUINO_
 board.flags=-D_USE_USB_FOR_SERIAL_
 ccflags=ffff
-ldscript=chipKIT-application-32MX440F256.ld
+ldscript=chipKIT-application-32MX440F256${upload.${prefs:board.${prefs:board}.programmer}.ldsuffix}.ld
 upload.protocol=stk500v2
 upload.maximum_size=258048
 upload.speed=115200
@@ -22,6 +22,14 @@ build.core=pic32
 build.variant=Olimex_PIC32_Pinguino
 family=pic32
 version=0.3
-revision=1
+revision=5
 core=chipKIT
 name=Olimex_Pinguino32
+
+icon.128=icons/ping128.png
+icon.64=icons/ping64.png
+icon.48=icons/ping48.png
+icon.32=icons/ping32.png
+icon.22=icons/ping22.png
+icon.16=icons/ping16.png
+
