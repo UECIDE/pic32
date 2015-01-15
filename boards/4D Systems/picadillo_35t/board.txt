@@ -1,5 +1,5 @@
 variant=picadillo_35t
-description=PICadillo-35T
+description=Picadillo-35T
 group=4D Systems
 platform=pic32
 board=_BOARD_PICADILLO_35T_
@@ -16,7 +16,7 @@ build.core=pic32
 build.variant=picadillo_35t
 family=pic32
 version=0.1
-revision=4
+revision=7
 core=chipKIT
 name=picadillo_35t
 
@@ -28,3 +28,11 @@ options.usb.withoutSerial.flags=
 options.usb.withSerial.name=Enable USB Serial
 options.usb.withSerial.flags=-D_USE_USB_FOR_SERIAL_
 
+icon.256=icons/4d-256.png
+icon.128=icons/4d-128.png
+icon.64=icons/4d-64.png
+icon.48=icons/4d-48.png
+icon.32=icons/4d-32.png
+icon.22=icons/4d-22.png
+icon.16=icons/4d-16.png
+icon.8=icons/4d-8.png

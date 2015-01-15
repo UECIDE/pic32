@@ -65,7 +65,7 @@
 #define	NUM_TCK_PINS		4
 #define	NUM_INT_PINS		5
 
-#define	NUM_SERIAL_PORTS	4
+#define	NUM_SERIAL_PORTS	6
 #define	NUM_SPI_PORTS		1
 #define	NUM_I2C_PORTS		1
 
@@ -321,6 +321,21 @@ extern const uint16_t	digital_pin_to_timer_PGM[];
 #define _SER3_IPL_ISR	_UART5_IPL_ISR
 #define	_SER3_IPL		_UART5_IPL_IPC
 #define	_SER3_SPL		_UART5_SPL_IPC
+
+#define	_SER4_BASE		_UART3_BASE_ADDRESS
+#define	_SER4_IRQ		_UART3_ERR_IRQ
+#define	_SER4_VECTOR	_UART_3_VECTOR
+#define _SER4_IPL_ISR	_UART3_IPL_ISR
+#define	_SER4_IPL		_UART3_IPL_IPC
+#define	_SER4_SPL		_UART3_SPL_IPC
+
+#define	_SER5_BASE		_UART6_BASE_ADDRESS
+#define	_SER5_IRQ		_UART6_ERR_IRQ
+#define	_SER5_VECTOR	_UART_6_VECTOR
+#define _SER5_IPL_ISR	_UART6_IPL_ISR
+#define	_SER5_IPL		_UART6_IPL_IPC
+#define	_SER5_SPL		_UART6_SPL_IPC
+
 
 /* ------------------------------------------------------------ */
 /*					SPI Port Declarations						*/

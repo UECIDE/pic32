@@ -27,7 +27,7 @@ sketch.upload=mphid::avrdude
 
 family=pic32
 version=0.5
-revision=5
+revision=6
 core=chipKIT
 name=velox_one
 

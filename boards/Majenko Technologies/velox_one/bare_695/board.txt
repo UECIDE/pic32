@@ -1,0 +1,50 @@
+description=Bare PIC32MX695F512L (Internal Osc)
+
+# new items
+group=Majenko Technologies
+platform=pic32
+board=_BOARD_BARE_695_
+board.flags=
+ccflags=ffff
+ldscript=bare-695.ld
+
+board.flags=
+
+upload.using=usb
+upload.maximum_size=524288
+upload.maximum_ram=131072
+upload.speed=115200
+
+bootloader.low_fuses=0xff
+bootloader.high_fuses=0xdd
+bootloader.extended_fuses=0x00
+bootloader.path=not-supported
+bootloader.file=not-supported
+bootloader.unlock_bits=0x3F
+bootloader.lock_bits=0x0F
+
+build.mcu=32MX695F512L
+build.f_cpu=80000000L
+build.core=pic32
+build.variant=bare_695
+
+upload.pic32prog.name=Upload using PicKit2 programmer
+upload.pic32prog..command.windows=${board.root}/tools/windows/pic32prog::-p::${filename}.hex
+upload.pic32prog.command.macosx=${board.root}/tools/osx/pic32prog::-p::${filename}.hex
+upload.pic32prog.command.linux=${board.root}/tools/linux/pic32prog::-p::${filename}.hex
+
+sketch.upload=pic32prog
+
+family=pic32
+version=0.10
+revision=3
+core=chipKIT
+name=bare_695
+
+icon.128=icons/majenko128.png
+icon.64=icons/majenko64.png
+icon.48=icons/majenko48.png
+icon.32=icons/majenko32.png
+icon.22=icons/majenko22.png
+icon.16=icons/majenko16.png
+

@@ -37,7 +37,7 @@ sketch.upload=mphid::avrdude
 
 family=pic32
 version=0.5
-revision=3
+revision=4
 core=chipKIT
 name=prfmv2usb
 

@@ -1,0 +1,44 @@
+variant=sdau
+description=SDAU
+group=Majenko Technologies
+platform=pic32
+board=_BOARD_MAJENKO_SDAU_
+board.flags=
+ccflags=ffff
+ldscript=chipKIT-application-32MX470F512${upload.${prefs:board.${prefs:board}.programmer}.ldsuffix}.ld
+upload.protocol=stk500v2
+upload.maximum_size=520192
+upload.speed=115200
+bootloader=bootloader
+bootloader.low_fuses=0xff
+bootloader.high_fuses=0xdd
+bootloader.extended_fuses=0x00
+bootloader.path=not-supported
+bootloader.file=not-supported
+bootloader.unlock_bits=0x3F
+bootloader.lock_bits=0x0F
+build.mcu=32MX470F512H
+build.f_cpu=96000000L
+build.core=pic32
+build.variant=sdau
+family=pic32
+version=0.6
+revision=3
+core=chipKIT-Git
+name=sdau
+
+options.usb.name=USB Settings
+options.usb.default=withSerial
+options.usb.purge=true
+options.usb.withoutSerial.name=Disable USB Serial
+options.usb.withoutSerial.flags=
+options.usb.withSerial.name=Enable USB Serial
+options.usb.withSerial.flags=-D_USE_USB_FOR_SERIAL_
+
+icon.128=icons/majenko128.png
+icon.64=icons/majenko64.png
+icon.48=icons/majenko48.png
+icon.32=icons/majenko32.png
+icon.22=icons/majenko22.png
+icon.16=icons/majenko16.png
+

@@ -29,7 +29,7 @@ sketch.upload=pic32prog
 
 family=pic32
 version=0.10
-revision=5
+revision=6
 core=chipKIT
 name=unipic795_nb8
 
