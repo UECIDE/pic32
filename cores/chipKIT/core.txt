@@ -19,7 +19,7 @@ examples.path=examples
 ldscript=unknown.ld
 board=_UNKNOWN_BOARD_
 
-upload.avrdude.name=Upload to chipKIT board
+upload.avrdude.name=Upload to chipKIT board via AVRDude
 upload.avrdude.command.linux_arm=${core.root}/tools/linux_arm/avrdude::-V::-p${build.mcu}::-P${port}::-b${upload.speed}::-C${core.root}/tools/linux_arm/avrdude.conf::-cstk500v2::-Uflash:w:${filename}.hex:i::${verbose}
 upload.avrdude.command.linux_i386=${core.root}/tools/linux32/avrdude::-V::-p${build.mcu}::-P${port}::-b${upload.speed}::-C${core.root}/tools/linux32/avrdude.conf::-cstk500v2::-Uflash:w:${filename}.hex:i::${verbose}
 upload.avrdude.command.linux_amd64=${core.root}/tools/linux64/avrdude::-V::-p${build.mcu}::-P${port}::-b${upload.speed}::-C${core.root}/tools/linux64/avrdude.conf::-cstk500v2::-Uflash:w:${filename}.hex:i::${verbose}
@@ -40,10 +40,16 @@ upload.pickit2.command.linux_amd64=${core.root}/tools/linux64/pic32prog::-p::${f
 upload.pickit2.command.windows=${core.root}/tools/windows/pic32prog::-p::${filename}.hex
 upload.pickit2.command.macosx=${core.root}/tools/macosx/pic32prog::-p::${filename}.hex
 
-upload.avrdude.verbose=-v
-upload.avrdude.quiet=-q::-q
+upload.pic32prog.name=Upload to chipKIT board via pic32prog
+upload.pic32prog.command.linux_arm=${core.root}/tools/linux_arm/pic32prog::-d::${port}::-p::${filename}.hex
+upload.pic32prog.command.linux_i386=${core.root}/tools/linux32/pic32prog::-d::${port}::-p::${filename}.hex
+upload.pic32prog.command.linux_amd64=${core.root}/tools/linux64/pic32prog::-d::${port}::-p::${filename}.hex
+upload.pic32prog.command.windows=${core.root}/tools/windows/pic32prog::-d::${port}::-p::${filename}.hex
+upload.pic32prog.command.macosx=${core.root}/tools/macosx/pic32prog::-d::${port}::-p::${filename}.hex
+upload.pic32prog.dtr=yes
+upload.pic32prog.rts=yes
 
-sketch.upload=avrdude::pickit2
+sketch.upload=avrdude::pickit2::pic32prog
 bootloader.upload=pickit2
 
 family=pic32

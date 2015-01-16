@@ -2,7 +2,7 @@
 <project name="chipKIT" default="build">
 
     <property name="version" value="0023" />
-    <property name="revision" value="26" />
+    <property name="revision" value="27" />
 
     <target name="build">
         <mkdir dir="files" />
